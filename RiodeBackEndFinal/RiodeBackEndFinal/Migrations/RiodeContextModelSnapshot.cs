@@ -80,29 +80,6 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("RiodeBackEndFinal.Models.CategoryVariations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VariationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("VariationId");
-
-                    b.ToTable("CategoryVariations");
-                });
-
             modelBuilder.Entity("RiodeBackEndFinal.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -331,25 +308,6 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("RiodeBackEndFinal.Models.CategoryVariations", b =>
-                {
-                    b.HasOne("RiodeBackEndFinal.Models.Category", "Category")
-                        .WithMany("CategoryVariations")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RiodeBackEndFinal.Models.Variation", "Variation")
-                        .WithMany("CategoryVariations")
-                        .HasForeignKey("VariationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Variation");
-                });
-
             modelBuilder.Entity("RiodeBackEndFinal.Models.Product", b =>
                 {
                     b.HasOne("RiodeBackEndFinal.Models.Category", "Category")
@@ -426,8 +384,6 @@ namespace RiodeBackEndFinal.Migrations
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Category", b =>
                 {
-                    b.Navigation("CategoryVariations");
-
                     b.Navigation("Children");
 
                     b.Navigation("Products");
@@ -442,8 +398,6 @@ namespace RiodeBackEndFinal.Migrations
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Variation", b =>
                 {
-                    b.Navigation("CategoryVariations");
-
                     b.Navigation("Variation_Options");
                 });
 

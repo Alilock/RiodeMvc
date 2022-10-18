@@ -585,3 +585,15 @@ C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal
 C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\obj\Debug\net6.0\RiodeBackEndFinal.pdb
 C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\obj\Debug\net6.0\RiodeBackEndFinal.genruntimeconfig.cache
 C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\obj\Debug\net6.0\ref\RiodeBackEndFinal.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\EntityFramework.SqlServer.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\EntityFramework.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\Z.EntityFramework.Extensions.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\Z.EntityFramework.Plus.EF6.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\Z.Expressions.Eval.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

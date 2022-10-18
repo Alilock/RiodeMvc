@@ -6,7 +6,6 @@ namespace RiodeBackEndFinal.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<CategoryVariations> CategoryVariations { get; set; }
         public ICollection<Variation_Option> Variation_Options { get; set; }
     }
 }

@@ -88,7 +88,7 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
                     ModelState.AddModelError("ImageFile", "Yüklədiyiniz fayl şəkil deyil");
                     return View();
                 }
-                if (file.CheckFileSize(20))
+                if (!file.CheckFileSize(20))
                 {
                     ModelState.AddModelError("ImageFile", "Yüklədiyiniz fayl 2mb-dan artıq olmamalıdır");
                     return View();

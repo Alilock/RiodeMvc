@@ -8,49 +8,65 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RiodeBackEndFinal
 build_property.RootNamespace = RiodeBackEndFinal
-build_property.ProjectDir = C:\Users\Cashloans\OneDrive\Desktop\RiodeBackEndFinal\RiodeBackEndFinal\
+build_property.ProjectDir = C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Cashloans\OneDrive\Desktop\RiodeBackEndFinal\RiodeBackEndFinal
+build_property.MSBuildProjectDirectory = C:\Users\Cashloans\OneDrive\Desktop\RiodeMvc\RiodeBackEndFinal\RiodeBackEndFinal
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Admin/Index.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Create.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Edit.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Index.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Slider/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Slider/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/Slider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Views/_ViewImports.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Views/_ViewStart.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Cashloans/OneDrive/Desktop/RiodeBackEndFinal/RiodeBackEndFinal/Views/Shared/_Layout.cshtml]
+[C:/Users/Cashloans/OneDrive/Desktop/RiodeMvc/RiodeBackEndFinal/RiodeBackEndFinal/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zdhnrusjos

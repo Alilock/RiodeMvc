@@ -268,7 +268,7 @@ namespace RiodeBackEndFinal.Migrations
                     b.Property<bool>("IsDisable")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsLeftSide")
+                    b.Property<bool?>("IsLeftSide")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("ModifiedAt")

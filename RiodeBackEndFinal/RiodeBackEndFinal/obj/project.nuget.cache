@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kVa5VqWstID6OrUTTgrTsBIT3lx6iqw7zm2gQrDJ0RfCHklgyLkre1q2tGyAXWTjOHa0wLQ5YED7y2OXmfSfyQ==",
+  "dgSpecHash": "v3x6xcWgvozH9BNBpHNZaeK04QcTO8IJjEWjQu3MzaLLn8S8+thRntb7fnokjU6i+qv5s7WKNKz+FwMPtie9yQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
+  "projectFilePath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cashloans\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Cashloans\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

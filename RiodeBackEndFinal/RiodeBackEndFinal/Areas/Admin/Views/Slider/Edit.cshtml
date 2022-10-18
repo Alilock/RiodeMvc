@@ -1,0 +1,22 @@
+﻿@model Slider
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <label asp-for="Title">Title</label>
+    <input class="form-control" asp-for="Title" type="text" />
+    <span class="text-danger" asp-validation-for="Title"></span> <br />
+    <label asp-for="SubTitle">SubTitle</label>
+    <input class="form-control" asp-for="SubTitle" type="text" />
+    <span class="text-danger" asp-validation-for="SubTitle"></span> <br />
+    <label asp-for="ImageFile">ImageFile</label>
+    <img class="image" id="output" width="100" />
+    <input class="form-control imagefile" asp-for="ImageFile" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
+    <span asp-validation-for="ImageFile"></span>
+    <label asp-for="IsLeftSide">Choose Side For Slider Content</label> <br />
+    <input type="radio" value="true" asp-for="IsLeftSide" /> <span>Left</span> <br />
+    <input type="radio" value="false" asp-for="IsLeftSide" /> <span>Right</span> <br />
+    <input type="radio" value="" asp-for="IsLeftSide" /> <span>Middle</span> <br />
+    <input type="checkbox" class="js-dynamic-state" checked />
+    <input type="hidden" asp-for="@Model.Id" />
+    <button class="btn btn-grd-success" type="submit">Save</button>
+    <button asp-action="Index" class="btn btn-grd-danger">Cancel</button>
+</form>

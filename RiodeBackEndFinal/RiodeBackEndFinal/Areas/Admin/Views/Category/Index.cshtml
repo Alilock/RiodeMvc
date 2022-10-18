@@ -1,4 +1,4 @@
-﻿@model CategoryVM
+﻿@model IEnumerable<Category>
 
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
@@ -58,11 +58,13 @@
                                                         <th>Image</th>
                                                         <th>Category Name</th>
                                                         <th>Parent Category</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                              @foreach (var item in Model.Categories)
+                                              @foreach (var item in Model)
                                                     {
                                                         <tr>
                                                             <td class="pro-list-img">
@@ -71,16 +73,27 @@
                                                             </td>
                                                             <td class="pro-name">
                                                                 <h6>@item.Name</h6>
+                                                            </td>
+                                                            <td>
+
+                                                                @if (Model.Where(c => c.Id == item.ParentId).SingleOrDefault()!=null)
+                                                                    {
+                                                                     @Model.Where(c=>c.Id==item.ParentId).SingleOrDefault().Name                 
+                                                                    }
+                                                                else
+                                                                  {
+                                                                     <span>This is parent</span>
+                                                                  }
 
                                                             </td>
                                                             <td>
-                                                                @if (Model.Categories.Where(c => c.Id == item.ParentId).SingleOrDefault()!=null)
+                                                                @if (item.IsDisable == true)
                                                                 {
-                                                                 @Model.Categories.Where(c=>c.Id==item.ParentId).SingleOrDefault().Name                 
+                                                                    <a asp-controller="Category" asp-action="SwitchStatus" asp-route-id="@item.Id" class="switch btn btn-danger">Disable</a>
                                                                 }
-                                                                else
+                                                                else if (item.IsDisable == false)
                                                                 {
-                                                                <span>This is parent</span>
+                                                                    <a asp-controller="Category" asp-action="SwitchStatus" asp-route-id="@item.Id" class="switch btn btn-success">Active</a>
                                                                 }
                                                             </td>
                                                             <td class="action-icon">
@@ -120,3 +133,24 @@
     <div id="styleSelector">
     </div>
 </div>
+@section scripts{
+    <script>
+
+
+        $(".switch").click(function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: "POST",
+                success: function (response) {
+                    console.log(response)
+                    if (response.error == false) {
+                        window.location.reload()
+                    }
+                }
+            })
+        })
+    </script>
+}

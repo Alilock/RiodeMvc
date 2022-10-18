@@ -1,26 +1,26 @@
-﻿@model Category
+﻿    @model Category
 
-<form method="post" asp-action="Edit" enctype="multipart/form-data">
-    <label asp-for="Name">Name</label>
-    <input class="form-control" asp-for="Name" type="text" />
-    <label asp-for="ImageFile">ImageFile</label> <br />
-    <img class="image" id="output" width="100" height="auto" src="~/Assets/Images/@Model?.ImageName" />
-    <input class="form-control imagefile" asp-for="ImageFile" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
-    <span asp-validation-for="ImageFile"></span>
-    <label asp-for="ParentId"></label>
-    <select class="form-control form-control-primary" asp-for="ParentId">
-        <option>--Select ParentCategory</option>
-      @foreach (var item in ViewBag.Categories)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
+    <form method="post" asp-action="Edit" enctype="multipart/form-data">
+        <label asp-for="Name">Name</label>
+        <input class="form-control" asp-for="Name" type="text" />
+        <label asp-for="ImageFile">ImageFile</label> <br />
+        <img class="image" id="output" width="100" height="auto" src="~/Assets/Images/@Model?.ImageName" />
+        <input class="form-control imagefile" asp-for="ImageFile" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
+        <span asp-validation-for="ImageFile"></span>
+        <label asp-for="ParentId"></label>
+        <select class="form-control form-control-primary" asp-for="ParentId">
+            <option>--Select ParentCategory</option>
+          @foreach (var item in ViewBag.Categories)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
         
-    </select>
-    <input type="hidden" asp-for="@Model.Id" />
+        </select>
+        <input type="hidden" asp-for="@Model.Id" />
 
-    <button class="btn btn-grd-success" type="submit">Save</button>
-    <button asp-action="Index" class="btn btn-grd-danger">Cancel</button>
-</form>
+        <button class="btn btn-grd-success" type="submit">Save</button>
+        <button asp-action="Index" class="btn btn-grd-danger">Cancel</button>
+    </form>
 
    
    

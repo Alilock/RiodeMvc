@@ -18,9 +18,7 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            CategoryVM categoryVM = new();
-            categoryVM.Categories = _context.Categories.ToList();
-            return View(categoryVM);
+            return View(_context.Categories.ToList());
         }
         public IActionResult Create()
         {
@@ -113,6 +111,44 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
             _context.Remove(category);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public IActionResult SwitchStatus(int? id)
+        {
+            if (id is null)
+            {
+                var response = new
+                {
+                    error = true,
+                    message = "taplmadi"
+                };
+                return Json(response);
+            }
+            var category = _context.Categories.Find(id);
+            if (category is null)
+            {
+                var response = new
+                {
+                    error = true,
+                    message = "taplmadi"
+                };
+                return Json(response);
+            }
+            if (category.IsDisable == false)
+            {
+                category.IsDisable = true;
+            }
+            else
+            {
+                category.IsDisable = false;
+            }
+            _context.SaveChanges();
+            return Json(new
+            {
+                error = false,
+                message = "ok"
+            });
+
         }
         public static void RemoveFile(string path)
         {

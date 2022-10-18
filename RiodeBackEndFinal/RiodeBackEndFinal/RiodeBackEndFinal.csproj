@@ -95,9 +95,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="wwwroot\Assets\Images\" />
+    <Folder Include="wwwroot\assets\images\demos\demo33\blog\" />
   </ItemGroup>
 
   <ItemGroup>

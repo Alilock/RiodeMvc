@@ -37,5 +37,9 @@ app.MapControllerRoute(
       name: "areas",
       pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
     );
+app.MapControllerRoute(
+      name: "default",
+      pattern:"{controller=Home}/{action=Index}/{id?}"
+    );
 RiodeBackEndFinal.Utlis.Constant.Constant.RoothPath= app.Environment.WebRootPath.ToString();
 app.Run();

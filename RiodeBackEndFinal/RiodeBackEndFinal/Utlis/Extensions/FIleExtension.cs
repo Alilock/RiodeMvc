@@ -16,7 +16,7 @@
         }
         public static bool CheckFileSize(this IFormFile file, int mb)
         {
-            return file.Length < mb * 1024 * 1024*1024;
+            return file.Length < mb * 1024 * 1024;
 
         }
         public static void SaveFile(this IFormFile file, string path)

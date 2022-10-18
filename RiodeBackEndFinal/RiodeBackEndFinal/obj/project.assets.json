@@ -9855,11 +9855,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
+      "projectUniqueName": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
       "projectName": "RiodeBackEndFinal",
-      "projectPath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
+      "projectPath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\RiodeBackEndFinal.csproj",
       "packagesPath": "C:\\Users\\Cashloans\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeBackEndFinal\\RiodeBackEndFinal\\obj\\",
+      "outputPath": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Cashloans\\AppData\\Roaming\\NuGet\\NuGet.Config",

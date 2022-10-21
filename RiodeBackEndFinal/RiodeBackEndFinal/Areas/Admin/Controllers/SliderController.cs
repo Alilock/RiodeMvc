@@ -55,7 +55,7 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
             string newfilename = Guid.NewGuid().ToString();
             newfilename += image.CutFileName();
             slider.ImageName = newfilename;
-            image.SaveFile(Path.Combine("Assets", "Images", newfilename));
+            image.SaveFile(Path.Combine("assets", "images", newfilename));
             await _context.Sliders.AddAsync(slider);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

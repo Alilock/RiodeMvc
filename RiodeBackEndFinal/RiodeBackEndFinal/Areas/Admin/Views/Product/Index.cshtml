@@ -1,0 +1,139 @@
+﻿
+@model ICollection<Product>
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <div class="page-header-title">
+                            <div class="d-inline">
+                                <h4>Product</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="page-header-breadcrumb">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item" style="float: left;">
+                                    <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item" style="float: left;">
+                                    <a href="#!">E-Commerce</a>
+                                </li>
+                                <li class="breadcrumb-item" style="float: left;">
+                                    <a href="#!">Product List</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page-header end -->
+            <!-- Page body start -->
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Product list card start -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Product List</h5>
+                                <a asp-action="Create" type="button"
+                                   class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger">
+
+                                    <i class="icofont icofont-plus m-r-5"></i> Add Category
+                                </a>
+                            </div>
+                            <div class="card-block">
+                                <div class="table-responsive">
+                                    <div class="table-content">
+                                        <div class="project-table">
+                                            <table id="e-product-list"
+                                                   class="table table-striped dt-responsive nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Image</th>
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>Price</th>
+                                                        <th>Action</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td class="pro-list-img">
+                                                                <img width="70" height="70" src="~/assets/images/@item.ProductImages.Where(pi=>pi.IsMain==true).FirstOrDefault().ImageName"
+                                                                 class="img-fluid" alt="tbl">
+                                                            </td>
+                                                            <td class="pro-name">
+                                                                <h6>@item.Name</h6>
+                                                            </td>
+                                                            <td>
+                                                            </td>
+                                                            <td>
+                                                            
+                                                            </td>
+                                                            <td class="action-icon">
+                                                                <a asp-action="Edit" asp-route-id="@item.Id"
+                                                               class="m-r-15 text-muted"
+                                                               data-toggle="tooltip"
+                                                               data-placement="top" title=""
+                                                               data-original-title="Edit">
+                                                                    <i class="icofont icofont-ui-edit"></i>
+                                                                </a>
+                                                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-muted"
+                                                               data-toggle="tooltip"
+                                                               data-placement="top" title=""
+                                                               data-original-title="Delete">
+                                                                    <i class="icofont icofont-delete-alt"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product list card end -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- Page body end -->
+        </div>
+    </div>
+    <!-- Main-body end -->
+    <div id="styleSelector">
+    </div>
+</div>
+@section scripts{
+    <script>
+
+
+        $(".switch").click(function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: "POST",
+                success: function (response) {
+                    console.log(response)
+                    if (response.error == false) {
+                        window.location.reload()
+                    }
+                }
+            })
+        })
+    </script>
+}

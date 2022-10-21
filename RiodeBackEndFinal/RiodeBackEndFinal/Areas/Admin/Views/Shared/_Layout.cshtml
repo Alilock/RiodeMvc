@@ -47,6 +47,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/Admin/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/Admin/assets/css/jquery.mCustomScrollbar.css">
+    @RenderSection("styles", false)
+
 </head>
 
 <body>
@@ -357,6 +359,16 @@
                                         <li class=" ">
                                             <a asp-controller="Category" asp-action="Index" >
                                                 <span class="pcoded-mtext">Categories</span>
+                                            </a>
+                                        </li>
+                                          <li class=" ">
+                                            <a asp-controller="Product" asp-action="Index">
+                                                <span class="pcoded-mtext">Products</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a asp-controller="Badge" asp-action="Index">
+                                                <span class="pcoded-mtext">Badges</span>
                                             </a>
                                         </li>
                                     </ul>

@@ -30,15 +30,6 @@ namespace RiodeBackEndFinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDisable")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -80,6 +71,22 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -103,7 +110,7 @@ namespace RiodeBackEndFinal.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountPercent")
+                    b.Property<int?>("DiscountPercent")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDisable")
@@ -114,6 +121,12 @@ namespace RiodeBackEndFinal.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("SellPrice")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StockCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -145,6 +158,29 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("ProductBadges");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.ProductColors", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.ProductImages", b =>
                 {
                     b.Property<int>("Id")
@@ -156,7 +192,7 @@ namespace RiodeBackEndFinal.Migrations
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsMain")
+                    b.Property<bool?>("IsMain")
                         .HasColumnType("bit");
 
                     b.Property<int>("ProductId")
@@ -167,35 +203,6 @@ namespace RiodeBackEndFinal.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
-                });
-
-            modelBuilder.Entity("RiodeBackEndFinal.Models.ProductVariations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("SellPrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("StockCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Variation_OptionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("Variation_OptionId");
-
-                    b.ToTable("ProductVariations");
                 });
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Setting", b =>
@@ -262,43 +269,6 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("Sliders");
                 });
 
-            modelBuilder.Entity("RiodeBackEndFinal.Models.Variation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Variations");
-                });
-
-            modelBuilder.Entity("RiodeBackEndFinal.Models.Variation_Option", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VariationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VariationId");
-
-                    b.ToTable("Variation_Options");
-                });
-
             modelBuilder.Entity("RiodeBackEndFinal.Models.Category", b =>
                 {
                     b.HasOne("RiodeBackEndFinal.Models.Category", "Parent")
@@ -336,45 +306,34 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.ProductColors", b =>
+                {
+                    b.HasOne("RiodeBackEndFinal.Models.Color", "Color")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RiodeBackEndFinal.Models.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.ProductImages", b =>
                 {
                     b.HasOne("RiodeBackEndFinal.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("RiodeBackEndFinal.Models.ProductVariations", b =>
-                {
-                    b.HasOne("RiodeBackEndFinal.Models.Product", "Product")
-                        .WithMany("ProductVariations")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RiodeBackEndFinal.Models.Variation_Option", "Variation_Option")
-                        .WithMany("ProductVariations")
-                        .HasForeignKey("Variation_OptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Variation_Option");
-                });
-
-            modelBuilder.Entity("RiodeBackEndFinal.Models.Variation_Option", b =>
-                {
-                    b.HasOne("RiodeBackEndFinal.Models.Variation", "Variation")
-                        .WithMany("Variation_Options")
-                        .HasForeignKey("VariationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Variation");
                 });
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Badge", b =>
@@ -389,21 +348,18 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.Color", b =>
+                {
+                    b.Navigation("ProductColors");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.Product", b =>
                 {
                     b.Navigation("ProductBadges");
 
-                    b.Navigation("ProductVariations");
-                });
+                    b.Navigation("ProductColors");
 
-            modelBuilder.Entity("RiodeBackEndFinal.Models.Variation", b =>
-                {
-                    b.Navigation("Variation_Options");
-                });
-
-            modelBuilder.Entity("RiodeBackEndFinal.Models.Variation_Option", b =>
-                {
-                    b.Navigation("ProductVariations");
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

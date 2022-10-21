@@ -6,5 +6,6 @@ namespace RiodeBackEndFinal.ViewModels
     {
         public IEnumerable<Slider> Sliders { get; set; }
         public ICollection<Category> Categories { get; set; }
+        public ICollection<Product> Products { get; set; }  
     }
 }

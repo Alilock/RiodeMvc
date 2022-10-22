@@ -9,7 +9,7 @@
 }
     <div class="row">
         <div class="col-lg-12">
-            <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <form method="post" asp-action="Edit" enctype="multipart/form-data">
                 <div class="card mb-4">
                     <div class="card-header">
                         <h4>Media</h4>
@@ -19,23 +19,30 @@
                             <div class="col-md-4">
                                 <div>
                                 </div>
-                                <span>Profil şəkli</span>
-                                <label class="text-center w-50" asp-for="MainImg"><img src="~/manage/assets/imgs/theme/upload.svg" alt="" /></label>
-                                <img width="50", src="~/assets/images/@Model.ProductImages.Where(i=>i.IsMain==true).FirstOrDefault().ImageName" />
+                                <span>Profil şəkli</span> <br />
+                                <label class="text-center w-50" asp-for="MainImg">
+                                    <img width="50" , src="~/assets/images/@Model.ProductImages.Where(i=>i.IsMain==true).FirstOrDefault().ImageName" />
+                                </label>
                             
                             </div>
                             <div class="col-md-4">
-                                <span>Hover şəkli (Məcbur deyil)</span>
-                                <label class="text-center w-50" asp-for="HoverImg"><img src="~/manage/assets/imgs/theme/upload.svg" alt="" /></label>
-                                <img width="50" , src="~/assets/images/@Model.ProductImages.Where(i=>i.IsMain==false).FirstOrDefault().ImageName" />
-                                <input class="form-control" type="file" asp-for="HoverImg" accept="image/*" />
-                                <span class="text-danger" asp-validation-for="HoverImg"></span>
+                                <span>Hover şəkli (Məcbur deyil)</span> <br />
+                                <label class="text-center w-50" asp-for="HoverImg">
+                                    <img width="50" , src="~/assets/images/@Model.ProductImages.Where(i=>i.IsMain==false).FirstOrDefault().ImageName" />
+                                </label>
+                           
                             </div>
                             <div class="col-md-4">
-                                <span>Digər şəkillər</span>
-                                <label class="text-center w-50" asp-for="OtherImgs"><img src="~/manage/assets/imgs/theme/upload.svg" alt="" /></label>
-                                <input class="form-control" type="file" asp-for="OtherImgs" accept="image/*" multiple />
-                                <span class="text-danger" asp-validation-for="HoverImg"></span>
+                                <span>Digər şəkillər</span> <br />
+                                <label class="text-center w-50" asp-for="OtherImgs">
+                                    @foreach (var item in Model.ProductImages.Where(i=>i.IsMain==null))
+                                {
+                                    <img width="50" src="~/assets/images/@item.ImageName" alt="" />
+                                }
+                                        
+                                </label>
+                                <input class="btn btn-success" placeholder="add images" type="file" asp-for="OtherImgs" accept="image/*" multiple />
+                                <span class="text-danger" asp-validation-for="OtherImgs"></span>
                             </div>
                         </div>
                         <div class="mb-4">
@@ -92,7 +99,7 @@
                                     <label asp-for="BadgeIds" disabled>Choose badges</label>
                                   @*  <select multiple class="mySelect2-multiple w-100" asp-for="BadgeIds" asp-items="new SelectList(ViewBag.Badges, nameof(Badge.Id),nameof(Badge.Name))">
                                     </select>*@
-                                    <select multiple class="form-control" asp-for="BadgeIds">
+                                <select multiple class="mySelect2-multiple" asp-for="BadgeIds">
                                         @foreach(Badge badge in ViewBag.Badges){
                                             if (Model.ProductBadges.Where(p=>p.BadgeId==badge.Id).Any())
                                             {
@@ -104,19 +111,30 @@
                                             }
                                         }
                                     </select>
-                                    <span class="text-danger" asp-validation-for="BadgeIds"></span>
                                 </div>
                             </div>
                             <div class="mb-4 col">
-                                <label asp-for="ColorIds" disabled>Choose colors</label>
-                                <select multiple class="mySelect2-multiple w-100" asp-for="ColorIds" asp-items="new SelectList(ViewBag.Colors, nameof(Color.Id),nameof(Color.Name))">
-                                </select>
-                                <span class="text-danger" asp-validation-for="ColorIds"></span>
+                                <label asp-for="ColorIds" disabled>Choose colors</label> 
+                               @* <select multiple class="mySelect2-multiple w-100" asp-for="ColorIds" asp-items="new SelectList(ViewBag.Colors, nameof(Color.Id),nameof(Color.Name))">
+                                </select>*@
+                            <select multiple class="mySelect2-multiple" asp-for="ColorIds">
+                                @foreach (Color color in ViewBag.Colors)
+                                {
+                                    if (Model.ProductColors.Where(p => p.ColorId == color.Id).Any())
+                                    {
+                                        <option selected value="@color.Id">@color.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@color.Id">@color.Name</option>
+                                    }
+                                }
+                            </select>
                             </div>
                             <div class="mb-4 col">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">Create</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </div>
             </form>

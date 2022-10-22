@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RiodeBackEndFinal.Models;
 
 namespace RiodeBackEndFinal.DAL
 {
-    public class RiodeContext :DbContext
+    public class RiodeContext :IdentityDbContext<AppUser>
     {
         public RiodeContext(DbContextOptions<RiodeContext> opt):base(opt)
         {

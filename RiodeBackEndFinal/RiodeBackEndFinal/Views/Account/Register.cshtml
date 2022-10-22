@@ -1,0 +1,62 @@
+﻿@using RiodeBackEndFinal.ViewModels
+@{
+    ViewData["Title"] = "Register";
+}
+@model RegisterVM
+<div class="login-popup mx-auto">
+    <div class="form-box">
+        <div class="tab tab-nav-simple tab-nav-boxed form-tab">
+            <ul class="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link border-no lh-1 ls-normal" >Register</a>
+                </li>
+            </ul>
+            
+                <div class="tab-pane" id="register">
+                <form method="post" asp-action="Register">
+                    <div class="form-group ">
+                        <input asp-for="FirstName" class="form-control" placeholder="First Name *" required /> <br />
+                        <span style="color:red" class="text-danger" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-group ">
+                        <input asp-for="Username" class="form-control" placeholder="UserName *" required /> <br />
+                        <span style="color:red" class="text-danger" asp-validation-for="Username"></span>
+                    </div>
+                    <div class="form-group ">
+                        <input asp-for="Email" class="form-control" placeholder="Email *" required /> <br />
+                        <span style="color:red" class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group ">
+                        <input asp-for="Password" class="form-control" placeholder="Password *" required /> <br />
+                        <span style="color:red" class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group ">
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword *" required /> <br />
+                        <span style="color:red" class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                        <div class="form-footer">
+                            <div class="form-checkbox">
+                                <input type="checkbox" class="custom-checkbox" id="register-agree" name="register-agree"
+                                       required />
+                                <label class="form-control-label" for="register-agree">
+                                    I agree to the
+                                    privacy policy
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-dark btn-block btn-rounded" type="submit">Register</button>
+                    </form>
+                    <div class="form-choice text-center">
+                        <label class="ls-m">or Register With</label>
+                        <div class="social-links">
+                            <a href="#" class="social-link social-google fab fa-google border-no"></a>
+                            <a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+                            <a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+                        </div>
+                    </div>
+                </div>
+                  
+                </div>
+            </div>
+    </div>
+

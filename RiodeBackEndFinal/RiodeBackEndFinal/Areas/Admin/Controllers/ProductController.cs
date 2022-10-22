@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Packaging;
 using RiodeBackEndFinal.DAL;
 using RiodeBackEndFinal.Models;
 using RiodeBackEndFinal.Utlis.Extensions;
@@ -8,18 +9,15 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductController : Controller
     {
-        RiodeContext _context { get;}
+        RiodeContext _context { get; }
         public ProductController(RiodeContext context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
-            var products = _context.Products.Include(p => p.ProductImages).ToList();
-            ICollection<Product> productss = _context.Products
-                .Include(p => p.ProductImages)
-                .Include(p => p.ProductBadges)
-                .ThenInclude(p => p.Badge).ToList();
+            var products = _context.Products.Include(p => p.ProductImages).Include(p=>p.Category).ToList();
+
             return View(products);
         }
         public IActionResult Create()
@@ -158,9 +156,8 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        public  IActionResult Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            ViewBag.Images = _context.ProductImages.ToList();
             ViewBag.Badges = _context.Badges;
             ViewBag.Colors = _context.Colors;
             ViewBag.Categories = _context.Categories;
@@ -168,44 +165,54 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
             var prod = _context.Products.Where(p => p.Id == id)
                                         .Include(p => p.ProductImages)
                                         .Include(p => p.ProductBadges)
-                                        .ThenInclude(p=>p.Badge)
+                                        .ThenInclude(p => p.Badge)
+                                        .Include(p=>p.ProductColors)
+                                        .ThenInclude(p=>p.Color)
                                         .SingleOrDefault();
-    
+
             if (prod is null) return NotFound();
             return View(prod);
         }
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public IActionResult Edit(int? id, Product product)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            var edited = _context.Products.Find(product);
-            product.Name= edited.Name;
-            product.Brand = edited.Brand;
-            product.Description= edited.Description;    
-            product.CategoryId= edited.CategoryId;
-            product.BadgeIds= edited.BadgeIds;
-            product.CostPrice = edited.CostPrice;
-            product.SellPrice= edited.SellPrice;
-            product.DiscountPercent=edited.DiscountPercent; 
-            product.ColorIds= edited.ColorIds;
+           
+            if (id is null || id == 0) return BadRequest();
+          
+            var edited = _context.Products.Where(p => p.Id == id)
+                                        .Include(p => p.ProductImages)
+                                        .Include(p => p.ProductBadges)
+                                        .ThenInclude(p => p.Badge)
+                                        .SingleOrDefault();
+            ViewBag.Badges = _context.Badges;
+            ViewBag.Colors = _context.Colors;
+            ViewBag.Categories = _context.Categories;
+
+            if (edited is null) return NotFound();
+            edited.Name  = product.Name;
+            edited.Brand = product.Brand  ;
+            edited.Description = product.Description ;
+            edited.CategoryId = product.CategoryId ;
+            edited.BadgeIds = product.BadgeIds;
+            edited.CostPrice = product.CostPrice    ;
+            edited.SellPrice = product.SellPrice;
+            edited.DiscountPercent = product.DiscountPercent  ;
+            edited.ColorIds = product.ColorIds;
             List<IFormFile> newImages = product.OtherImgs;
             List<ProductImages> images = new List<ProductImages>();
-            if (newImages !=null)
+            if (newImages != null)
             {
                 foreach (var image in newImages)
                 {
                     if (!image.CheckFileType("image/"))
                     {
-                        ModelState.AddModelError("MainImage", "Yüklədiyiniz fayl şəkil deyil");
-                        return View();
+                        ModelState.AddModelError("OtherImgs", "Yüklədiyiniz fayl şəkil deyil");
+                        return View(edited);
                     }
                     if (!image.CheckFileSize(2))
                     {
-                        ModelState.AddModelError("MainImage", "Yüklədiyiniz şəkil 2mb-dan artıq olmamalıdır");
-                        return View();
+                        ModelState.AddModelError("OtherImgs", "Yüklədiyiniz şəkil 2mb-dan artıq olmamalıdır");
+                        return View(edited);
                     }
                     foreach (var img in newImages)
                     {
@@ -218,10 +225,47 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
                             Product = edited,
                         });
                     }
+                    edited.ProductImages.AddRange(images);
                 }
             }
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index));  
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult SwitchStatus(int? id)
+        {
+            if (id is null)
+            {
+                var response = new
+                {
+                    error = true,
+                    message = "taplmadi"
+                };
+                return Json(response);
+            }
+            var product = _context.Products.Find(id);
+            if (product is null)
+            {
+                var response = new
+                {
+                    error = true,
+                    message = "taplmadi"
+                };
+                return Json(response);
+            }
+            if (product.IsDisable == false)
+            {
+                product.IsDisable = true;
+            }
+            else
+            {
+                product.IsDisable = false;
+            }
+            _context.SaveChanges();
+            return Json(new
+            {
+                error = false,
+                message = "ok"
+            });
         }
     }
 }

@@ -19,7 +19,7 @@
         };
         (function (d) {
             var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = 'js/webfont.js';
+            wf.src = '../../assets/js/webfont.js';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
@@ -73,11 +73,11 @@
                         <span class="divider"></span>
                         <a href="~/assets/contact-us.html" class="contact d-lg-show"><i class="d-icon-map"></i>Contact</a>
                         <a href="~/assets/#" class="help d-lg-show"><i class="d-icon-info"></i> Need Help</a>
-                        <a class="login-link" href="~/assets/ajax/login.html" data-toggle="login-modal">
+                        <a class="" asp-controller="Account" asp-action="Login" >
                             <i class="d-icon-user"></i>Sign in
                         </a>
                         <span class="delimiter">/</span>
-                        <a class="register-link ml-0" href="~/assets/ajax/login.html" data-toggle="login-modal">Register</a>
+                        <a class="ml-0" asp-controller="Account" asp-action="Register">Register</a>
                         <!-- End of Login -->
                     </div>
                 </div>
@@ -782,7 +782,7 @@
         </div>
     </div>
 
-    <div class="newsletter-popup mfp-hide" id="newsletter-popup" style="background-image: url(images/newsletter-popup.jpg)">
+    <div class="newsletter-popup mfp-hide" id="newsletter-popup" style="background-image: url(../../assets/images/newsletter-popup.jpg)">
         <div class="newsletter-content">
             <h4 class="text-uppercase text-dark">Up to <span class="text-primary">20% Off</span></h4>
             <h2 class="font-weight-semi-bold">Sign up to <span>RIODE</span></h2>

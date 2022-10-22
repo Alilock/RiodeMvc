@@ -59,6 +59,7 @@
                                                         <th>Name</th>
                                                         <th>Category</th>
                                                         <th>Price</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
 
                                                     </tr>
@@ -75,9 +76,20 @@
                                                                 <h6>@item.Name</h6>
                                                             </td>
                                                             <td>
+                                                                @item.Category.Name
                                                             </td>
                                                             <td>
-                                                            
+                                                            @item.SellPrice
+                                                            </td>
+                                                            <td>
+                                                                    @if (item.IsDisable == true)
+                                                                    {
+                                                                    <a asp-controller="Product" asp-action="SwitchStatus" asp-route-id="@item.Id" class="switch btn btn-danger">Disable</a>
+                                                                    }   
+                                                                    else if (item.IsDisable == false)
+                                                                    {
+                                                                    <a asp-controller="Product" asp-action="SwitchStatus" asp-route-id="@item.Id" class="switch btn btn-success">Active</a>
+                                                                    }
                                                             </td>
                                                             <td class="action-icon">
                                                                 <a asp-action="Edit" asp-route-id="@item.Id"

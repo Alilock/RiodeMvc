@@ -25,7 +25,8 @@
         })(document);
     </script>
 
-
+    <!-- CSS only -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <link rel="stylesheet" type="text/css" href="~/assets/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets/vendor/animate/animate.min.css">
@@ -73,11 +74,20 @@
                         <span class="divider"></span>
                         <a href="~/assets/contact-us.html" class="contact d-lg-show"><i class="d-icon-map"></i>Contact</a>
                         <a href="~/assets/#" class="help d-lg-show"><i class="d-icon-info"></i> Need Help</a>
-                        <a class="" asp-controller="Account" asp-action="Login" >
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                              <a ><i class="d-icon-user "></i>@User.Identity.Name</a>
+                        <span class="delimiter">/</span>
+
+                            <a class="ml-0" asp-controller="Account" asp-action="LogOut"><i class="bi bi-box-arrow-right"></i>Logout    </a>
+                        }
+                        else{
+                                           <a class="" asp-controller="Account" asp-action="Login" >
                             <i class="d-icon-user"></i>Sign in
                         </a>
                         <span class="delimiter">/</span>
                         <a class="ml-0" asp-controller="Account" asp-action="Register">Register</a>
+                        }
                         <!-- End of Login -->
                     </div>
                 </div>
@@ -782,26 +792,6 @@
         </div>
     </div>
 
-    <div class="newsletter-popup mfp-hide" id="newsletter-popup" style="background-image: url(../../assets/images/newsletter-popup.jpg)">
-        <div class="newsletter-content">
-            <h4 class="text-uppercase text-dark">Up to <span class="text-primary">20% Off</span></h4>
-            <h2 class="font-weight-semi-bold">Sign up to <span>RIODE</span></h2>
-            <p class="text-grey">
-                Subscribe to the Riode eCommerce newsletter to receive timely updates from your favorite
-                products.
-            </p>
-            <form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-round">
-                <input type="email" class="form-control email" name="email" id="email2" placeholder="Email address here..."
-                       required="">
-                <button class="btn btn-dark" type="submit">SUBMIT</button>
-            </form>
-            <div class="form-checkbox justify-content-center">
-                <input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
-                       required />
-                <label for="hide-newsletter-popup">Don't show this popup again</label>
-            </div>
-        </div>
-    </div>
 
     <!-- Plugins JS File -->
     <script src="~/assets/vendor/jquery/jquery.min.js"></script>

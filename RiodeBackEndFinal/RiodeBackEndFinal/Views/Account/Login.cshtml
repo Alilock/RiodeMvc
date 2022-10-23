@@ -1,8 +1,9 @@
-﻿@{
+﻿@using RiodeBackEndFinal.ViewModels
+@{
     ViewData["Title"] = "Login";
 }   
 
-
+@model LoginVM
 <div class="login-popup mx-auto">
     <div class="form-box">
         <div class="tab tab-nav-simple tab-nav-boxed form-tab">
@@ -13,19 +14,23 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="signin">
-                    <form action="#">
+                    <form method="post" asp-action="Login">
+                        <div asp-validation-summary="ModelOnly"></div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" id="singin-email" name="singin-email" placeholder="Username or Email Address *" required /> <br />
+                            <input asp-for="UserName" class="form-control" id="singin-email"  placeholder="Username *" required /> 
+                            <span asp-validation-for="UserName"></span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="singin-password" name="singin-password" placeholder="Password *"
+                            <input asp-for="Password" class="form-control" id="singin-password"  placeholder="Password *"
                                    required />
+                            <span asp-validation-for="Password"></span>
+
                         </div>
                         <div class="form-footer">
                             <div class="form-checkbox">
-                                <input type="checkbox" class="custom-checkbox" id="signin-remember"
-                                       name="signin-remember" />
-                                <label class="form-control-label" for="signin-remember">
+                                <input asp-for="RememberMe" class="custom-checkbox" 
+                                        />
+                                <label class="form-control-label" asp-for="RememberMe">
                                     Remember
                                     me
                                 </label>

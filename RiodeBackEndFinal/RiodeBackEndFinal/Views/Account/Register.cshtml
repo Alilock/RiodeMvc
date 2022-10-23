@@ -8,30 +8,32 @@
         <div class="tab tab-nav-simple tab-nav-boxed form-tab">
             <ul class="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link border-no lh-1 ls-normal" >Register</a>
+                    <a class="nav-link border-no lh-1 ls-normal" href="#register">Register</a>
                 </li>
             </ul>
             
                 <div class="tab-pane" id="register">
                 <form method="post" asp-action="Register">
+                    <div class="alert" asp-validation-summary="ModelOnly">
+                    </div>
                     <div class="form-group ">
-                        <input asp-for="FirstName" class="form-control" placeholder="First Name *" required /> <br />
+                        <input asp-for="FirstName" class="form-control" placeholder="First Name *" required />
                         <span style="color:red" class="text-danger" asp-validation-for="FirstName"></span>
                     </div>
                     <div class="form-group ">
-                        <input asp-for="Username" class="form-control" placeholder="UserName *" required /> <br />
+                        <input asp-for="Username" class="form-control" placeholder="UserName *" required /> 
                         <span style="color:red" class="text-danger" asp-validation-for="Username"></span>
                     </div>
                     <div class="form-group ">
-                        <input asp-for="Email" class="form-control" placeholder="Email *" required /> <br />
+                        <input asp-for="Email" class="form-control" placeholder="Email *" required />
                         <span style="color:red" class="text-danger" asp-validation-for="Email"></span>
                     </div>
                     <div class="form-group ">
-                        <input asp-for="Password" class="form-control" placeholder="Password *" required /> <br />
+                        <input asp-for="Password" class="form-control" placeholder="Password *" required />
                         <span style="color:red" class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <div class="form-group ">
-                        <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword *" required /> <br />
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword *" required />   
                         <span style="color:red" class="text-danger" asp-validation-for="ConfirmPassword"></span>
                     </div>
                         <div class="form-footer">

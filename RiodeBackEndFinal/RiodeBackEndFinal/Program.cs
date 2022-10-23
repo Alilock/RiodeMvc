@@ -15,12 +15,22 @@ builder.Services.AddDbContext<RiodeContext>(opt =>
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 {
     opt.User.RequireUniqueEmail = true;
+
     opt.Password.RequiredLength = 8;
     opt.Password.RequireNonAlphanumeric = false;
     opt.Password.RequireLowercase = false;
     opt.Password.RequireUppercase = false;
 
-}).AddDefaultTokenProviders().AddEntityFrameworkStores<RiodeContext>(); 
+    opt.Lockout.MaxFailedAccessAttempts = 4;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+    opt.Lockout.AllowedForNewUsers = true;
+    
+
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<RiodeContext>();
+//builder.Services.Configure<IdentityOptions>(opts =>
+//{
+//    opts.SignIn.RequireConfirmedEmail = true;
+//});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +47,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 
 //app.MapControllerRoute(
 //    name: "default",

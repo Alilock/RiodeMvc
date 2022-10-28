@@ -311,7 +311,7 @@ namespace RiodeBackEndFinal.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DiscountPercent")
+                    b.Property<int>("DiscountPercent")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDisable")
@@ -404,6 +404,28 @@ namespace RiodeBackEndFinal.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("RiodeBackEndFinal.Models.ResetPasswordCode", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("ExpireTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ResetPasswordCodes");
                 });
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Setting", b =>

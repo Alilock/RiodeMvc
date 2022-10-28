@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5Bk6AZpcB5cLMWxiDt/Vd/8bFqe+itVCP5Te1DDNlZY=",
+  "Hash": "4HIyLcG591t+JMFBUHXar0Ahe9ShS1GFTm8M5rqqNZY=",
   "Source": "RiodeBackEndFinal",
   "BasePath": "_content/RiodeBackEndFinal",
   "Mode": "Default",
@@ -24072,23 +24072,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\fonts\\riode.woff2"
     },
     {
-      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\080e919d-c703-453a-b204-41eca6d5f3eb280539872_2852121651600515_6328638521988439716_n.jpg",
-      "SourceId": "RiodeBackEndFinal",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
-      "BasePath": "_content/RiodeBackEndFinal",
-      "RelativePath": "assets/images/080e919d-c703-453a-b204-41eca6d5f3eb280539872_2852121651600515_6328638521988439716_n.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\080e919d-c703-453a-b204-41eca6d5f3eb280539872_2852121651600515_6328638521988439716_n.jpg"
-    },
-    {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\0ceab0d6-7f2e-4dba-ba1b-5b75ed0dde2dhmgoepprod (3).webp",
       "SourceId": "RiodeBackEndFinal",
       "SourceType": "Discovered",
@@ -24174,6 +24157,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\2b796f7f-cc6d-4d6a-8951-96965e345423hmgoepprod (1).jpg"
     },
     {
+      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\36425823-452c-4003-8a1d-9e243a622fc5280539872_2852121651600515_6328638521988439716_n.jpg",
+      "SourceId": "RiodeBackEndFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
+      "BasePath": "_content/RiodeBackEndFinal",
+      "RelativePath": "assets/images/36425823-452c-4003-8a1d-9e243a622fc5280539872_2852121651600515_6328638521988439716_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\36425823-452c-4003-8a1d-9e243a622fc5280539872_2852121651600515_6328638521988439716_n.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\3a3737b7-e137-4f8a-918a-847162436900hmgoepprod (3).webp",
       "SourceId": "RiodeBackEndFinal",
       "SourceType": "Discovered",
@@ -24208,6 +24208,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\3b416b6d-3973-4563-93e1-f23837484b258591513717_2_2_8.jpg"
     },
     {
+      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\3c105658-193d-47f4-8da4-006c34de7d354247522251_2_3_8.jpg",
+      "SourceId": "RiodeBackEndFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
+      "BasePath": "_content/RiodeBackEndFinal",
+      "RelativePath": "assets/images/3c105658-193d-47f4-8da4-006c34de7d354247522251_2_3_8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\3c105658-193d-47f4-8da4-006c34de7d354247522251_2_3_8.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\40ffc434-b54f-4f88-a826-f2c40c2fcb5bhmgoepprod (5).jfif",
       "SourceId": "RiodeBackEndFinal",
       "SourceType": "Discovered",
@@ -24240,6 +24257,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\5a62f705-c997-49f4-9402-e379e9ed8fbf8591513717_2_5_8.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\5f0d29d6-9a33-4ccb-9aeb-1a1af299e30a280539872_2852121651600515_6328638521988439716_n.jpg",
+      "SourceId": "RiodeBackEndFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
+      "BasePath": "_content/RiodeBackEndFinal",
+      "RelativePath": "assets/images/5f0d29d6-9a33-4ccb-9aeb-1a1af299e30a280539872_2852121651600515_6328638521988439716_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\5f0d29d6-9a33-4ccb-9aeb-1a1af299e30a280539872_2852121651600515_6328638521988439716_n.jpg"
     },
     {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\6072353a-a20b-46f4-bcaf-ba39dcc590f0hmgoepprod.webp",
@@ -24480,6 +24514,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\b8ecb634-12f6-410a-9ad8-a333fbb86446hmgoepprod (9).webp"
     },
     {
+      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\b9cc56e0-13e2-46c3-844b-b1731363a0104247522251_2_1_8.jpg",
+      "SourceId": "RiodeBackEndFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
+      "BasePath": "_content/RiodeBackEndFinal",
+      "RelativePath": "assets/images/b9cc56e0-13e2-46c3-844b-b1731363a0104247522251_2_1_8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\b9cc56e0-13e2-46c3-844b-b1731363a0104247522251_2_1_8.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\b9ee849c-4db3-4c49-a967-f63e416ef60ahmgoepprod (7).webp",
       "SourceId": "RiodeBackEndFinal",
       "SourceType": "Discovered",
@@ -24512,6 +24563,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\banner.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\bdccb9a4-0789-46ff-afca-c144d91243aa4247522251_2_2_8.jpg",
+      "SourceId": "RiodeBackEndFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\",
+      "BasePath": "_content/RiodeBackEndFinal",
+      "RelativePath": "assets/images/bdccb9a4-0789-46ff-afca-c144d91243aa4247522251_2_2_8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\bdccb9a4-0789-46ff-afca-c144d91243aa4247522251_2_2_8.jpg"
     },
     {
       "Identity": "C:\\Users\\Cashloans\\OneDrive\\Desktop\\RiodeMvc\\RiodeBackEndFinal\\RiodeBackEndFinal\\wwwroot\\assets\\images\\blog\\1_lg.jpg",

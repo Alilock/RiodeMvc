@@ -6,20 +6,18 @@ namespace RiodeBackEndFinal.Utlis.Constant
     public class EmailHelper
     {
 
-        public bool SendEmail(string userMail, string confirmLink)
+        public bool SendEmail(string userMail, string emailcontent,string emailSubject)
         {
 
-            #region bodymail
-            string body=$"<a href='${confirmLink}'>confirm your mail</a>";
-            #endregion
+           
             string myMail = "riodehelp@gmail.com";
             string pass = "lakmvyvazlnazjab";
 
             MailMessage mailMessage = new ();
             mailMessage.From= new MailAddress(myMail,"Riode");
             mailMessage.To.Add(new MailAddress(userMail));
-            mailMessage.Subject = "Confirm Your Email";
-            mailMessage.Body = body;
+            mailMessage.Subject = emailSubject;
+            mailMessage.Body = emailcontent;
             mailMessage.IsBodyHtml = true;
 
             SmtpClient client = new()

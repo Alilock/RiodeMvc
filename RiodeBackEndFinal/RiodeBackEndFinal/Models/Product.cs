@@ -10,7 +10,7 @@ namespace RiodeBackEndFinal.Models
         public string Description { get; set; }
         public double CostPrice { get; set; }
         public double SellPrice { get; set; }
-        public int? DiscountPercent { get; set; }
+        public int DiscountPercent { get; set; }
         public int StockCount { get; set; }
         // Category Relation o-m
         public int? CategoryId { get; set; }

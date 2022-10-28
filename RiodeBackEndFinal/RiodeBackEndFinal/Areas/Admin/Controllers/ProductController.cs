@@ -183,6 +183,8 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
                                         .Include(p => p.ProductImages)
                                         .Include(p => p.ProductBadges)
                                         .ThenInclude(p => p.Badge)
+                                        .Include(p=>p.ProductColors)
+                                        .ThenInclude(p=>p.Color)
                                         .SingleOrDefault();
             ViewBag.Badges = _context.Badges;
             ViewBag.Colors = _context.Colors;
@@ -190,14 +192,38 @@ namespace RiodeBackEndFinal.Areas.Admin.Controllers
 
             if (edited is null) return NotFound();
             edited.Name  = product.Name;
-            edited.Brand = product.Brand  ;
-            edited.Description = product.Description ;
+            edited.Brand = product.Brand;
+            edited.Description = product.Description;
             edited.CategoryId = product.CategoryId ;
-            edited.BadgeIds = product.BadgeIds;
-            edited.CostPrice = product.CostPrice    ;
+            edited.CostPrice = product.CostPrice;
             edited.SellPrice = product.SellPrice;
-            edited.DiscountPercent = product.DiscountPercent  ;
-            edited.ColorIds = product.ColorIds;
+            edited.DiscountPercent = product.DiscountPercent;
+            if (product.ColorIds != null)
+            {
+                    List<ProductColors> productColors = new();
+                    foreach (var colorId in product.ColorIds)
+                    {
+                        productColors.Add(new() { ColorId = colorId, ProductId = product.Id });
+                    }
+                    edited.ProductColors = productColors;
+            }
+            else
+            {
+                edited.ProductColors.Clear();   
+            }
+            if (product.BadgeIds!=null)
+            {
+                List<ProductBadges> productBadges = new();
+                foreach (var badgeId in product.BadgeIds)
+                {
+                    productBadges.Add(new() { BadgeId = badgeId, ProductId = product.Id });
+                }
+                edited.ProductBadges = productBadges;
+            }
+            else
+            {
+                edited.ProductBadges.Clear();
+            }
             List<IFormFile> newImages = product.OtherImgs;
             List<ProductImages> images = new List<ProductImages>();
             if (newImages != null)

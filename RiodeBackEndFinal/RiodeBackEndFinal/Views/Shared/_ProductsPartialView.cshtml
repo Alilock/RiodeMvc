@@ -1,0 +1,66 @@
+﻿@model ICollection<Product>
+
+	@foreach (var prod in Model)
+{
+<div class="product-wrap">
+	<div class="product">
+		<figure class="product-media">
+			<a href="product.html">
+				<img src="~/assets/images/@prod.ProductImages.Where(pi=>pi.IsMain==true).FirstOrDefault().ImageName" alt="product" width="280" height="315">
+			</a>
+			<div class="product-label-group">
+				@foreach (var badge in prod.ProductBadges)
+					{
+					<label class="product-label label-new">@badge.Badge.Name</label>
+					}
+					@if (prod.DiscountPercent>0)
+					{
+				<label class="product-label label-sale">@prod.DiscountPercent % OFF</label>
+						
+					}
+			</div>
+			<div class="product-action-vertical">
+				<a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
+				   data-target="#addCartModal" title="Add to cart">
+					<i class="d-icon-bag"></i>
+				</a>
+				<a href="#" class="btn-product-icon btn-wishlist"
+				   title="Add to wishlist"><i class="d-icon-heart"></i></a>
+			</div>
+			<div class="product-action">
+				<a href="#" class="btn-product btn-quickview" title="Quick View">
+					Quick
+					View
+				</a>
+			</div>
+		</figure>
+		<div class="product-details">
+			<div class="product-cat">
+				<a href="shop-grid-3col.html">@prod.Category.Name</a>
+			</div>
+			<h3 class="product-name">
+				<a href="product.html">@prod.Name</a>
+			</h3>
+			<div class="product-price">
+				@if (prod.DiscountPercent>0)
+					{
+						<ins class="new-price">$@(prod.SellPrice * (100 - prod.DiscountPercent) / 100)</ins>
+
+						<del class="old-price">$@prod.SellPrice</del>
+					}
+					else{
+						<span class="price">$@prod.SellPrice</span>
+					}
+			</div>
+			<div class="ratings-container">
+				<div class="ratings-full">
+					<span class="ratings" style="width:60%"></span>
+					<span class="tooltiptext tooltip-top"></span>
+				</div>
+				<a href="product.html" class="rating-reviews">( 16 reviews )</a>
+			</div>
+		</div>
+	</div>
+</div>
+	
+}

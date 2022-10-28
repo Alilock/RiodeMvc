@@ -20,5 +20,6 @@ namespace RiodeBackEndFinal.DAL
        public DbSet<Category> Categories { get; set; }
        public DbSet<Color> Colors { get; set; }
        public DbSet<ProductColors> ProductColors { get; set; }
+       public DbSet<ResetPasswordCode> ResetPasswordCodes { get; set; } 
     }
 }

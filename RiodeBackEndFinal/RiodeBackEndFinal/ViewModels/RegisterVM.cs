@@ -4,7 +4,7 @@ namespace RiodeBackEndFinal.ViewModels
 {
     public class RegisterVM
     {
-        [Required, StringLength(100)]
+        [Required, StringLength(100),DataType(DataType.Text)]
         public string FirstName { get; set; }
    
         [Required, StringLength(50), DataType(DataType.EmailAddress)]

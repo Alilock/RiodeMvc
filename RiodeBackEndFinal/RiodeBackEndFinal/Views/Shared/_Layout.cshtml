@@ -35,9 +35,12 @@
     <link rel="stylesheet" type="text/css" href="~/assets/vendor/magnific-popup/magnific-popup.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets/vendor/owl-carousel/owl.carousel.min.css">
 
+
+    @RenderSection("styles", false)
     <!-- Main CSS File -->
     <link rel="stylesheet" type="text/css" href="~/assets/css/demo1.min.css">
-    @RenderSection("styles", false)
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.min.css">
+
 </head>
 
 <body class="home">
@@ -215,7 +218,7 @@
                         <nav class="main-nav">
                             <ul class="menu">
                                 <li class="active">
-                                    <a href="~/assets/demo1.html">Home</a>
+                                    <a asp-action="Index" asp-controller="Home" >Home</a>
                                 </li>
                                 <li>
                                     <a href="~/assets/shop.html">Categories</a>
@@ -279,7 +282,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="~/assets/product.html">Products</a>
+                                    <a asp-controller="Product" asp-action="Shop">Products</a>
                                     <div class="megamenu">
                                         <div class="row">
                                             <div class="col-6 col-sm-4 col-md-3 col-lg-4">
@@ -802,6 +805,7 @@
     <script src="~/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
     <!-- Main JS File -->
     <script src="~/assets/js/main.min.js"></script>
+    @RenderSection("scripts",false)
 </body>
 
 </html>

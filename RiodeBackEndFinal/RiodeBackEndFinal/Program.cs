@@ -27,10 +27,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     
 
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<RiodeContext>();
-//builder.Services.Configure<IdentityOptions>(opts =>
-//{
-//    opts.SignIn.RequireConfirmedEmail = true;
-//});
+builder.Services.Configure<IdentityOptions>(opts =>
+{
+    opts.SignIn.RequireConfirmedEmail = true;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

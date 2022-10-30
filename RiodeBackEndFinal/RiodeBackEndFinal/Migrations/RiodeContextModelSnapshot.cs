@@ -428,6 +428,41 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("ResetPasswordCodes");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppUserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Raiting")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId1");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -610,6 +645,28 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.Review", b =>
+                {
+                    b.HasOne("RiodeBackEndFinal.Models.AppUser", "AppUser")
+                        .WithMany("Reviews")
+                        .HasForeignKey("AppUserId1");
+
+                    b.HasOne("RiodeBackEndFinal.Models.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("RiodeBackEndFinal.Models.AppUser", b =>
+                {
+                    b.Navigation("Reviews");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.Badge", b =>
                 {
                     b.Navigation("ProductBadges");
@@ -634,6 +691,8 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("ProductColors");
 
                     b.Navigation("ProductImages");
+
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

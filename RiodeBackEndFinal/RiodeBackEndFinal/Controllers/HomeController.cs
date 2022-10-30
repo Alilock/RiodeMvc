@@ -26,7 +26,9 @@ namespace RiodeBackEndFinal.Controllers
                 .ThenInclude(p => p.Badge).ToList();
             homeVM.Categories = _context.Categories.Where(c=>c.IsDisable==false).OrderByDescending(c => c.Products.Count()).Take(4).ToList();
             homeVM.Products = _context.Products
+                .Include(p=>p.Category)
                 .Include(p=>p.ProductImages)
+                .Include(p =>p.Reviews)
                 .Include(p=>p.ProductBadges)
                 .ThenInclude(p=>p.Badge).ToList();
             return View(homeVM);    

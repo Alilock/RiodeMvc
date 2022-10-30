@@ -18,7 +18,7 @@ namespace RiodeBackEndFinal.Controllers
         public SignInManager<AppUser> SignInManager { get; }
         public RiodeContext RiodeContext { get; }
 
-        public AccountController(UserManager<AppUser> userManager,
+        public AccountController(UserManager<AppUser> userManager,  
                                  SignInManager<AppUser> signInManager,
                                  RiodeContext riodeContext)
         {

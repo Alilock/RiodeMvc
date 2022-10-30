@@ -1,0 +1,42 @@
+﻿@model ICollection<Review>
+<div class="comments mb-8 pt-2 pb-2 border-no">
+	<ul>
+		@foreach (var review in Model)
+		{
+			<li>
+				<div class="comment">
+					@*<figure class="comment-media">
+						<a href="#">
+							<img src="~/assets/images/blog/comments/1.jpg" alt="avatar">
+						</a>
+					</figure>*@
+					<div class="comment-body">
+						<div class="comment-rating ratings-container mb-0">
+							<div class="ratings-full">
+								@{
+									var rPerc = 20*review.Raiting;
+								
+								}
+								<span class="ratings" style="width:@rPerc%"></span>
+								<span class="tooltiptext tooltip-top">@review.Raiting	</span>
+							</div>
+						</div>
+						<div class="comment-user">
+							<span class="comment-date text-body">
+							 @review.CreatedDate.ToString("f")
+							</span>
+							<h4><a href="#">@review.AppUser.UserName</a></h4>
+						</div>
+
+						<div class="comment-content">
+							<p>
+								@review.Content
+							</p>
+						</div>
+					</div>
+				</div>
+			</li>
+		}
+		
+	</ul>
+</div>

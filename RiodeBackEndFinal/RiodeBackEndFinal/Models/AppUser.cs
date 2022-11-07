@@ -6,7 +6,7 @@ namespace RiodeBackEndFinal.Models
     {
         public string FirstName { get; set; }
         public ICollection<Review> Reviews { get; set; }
-
+        public ICollection<UserBasket> UserBaskets { get; set; }
     }
 }
 

@@ -1,0 +1,73 @@
+﻿@model ICollection<UserBasket>
+@{
+    double subtotal = 0;
+
+    foreach (var item in Model)
+    {
+        double price = item.Count*(item.Product.SellPrice * (100 - item.Product.DiscountPercent) / 100);
+        subtotal += price;
+    }
+}
+<div class="dropdown cart-dropdown type2 cart-offcanvas mr-0 mr-lg-2">
+    <a href="~/assets/#" class="cart-toggle label-block link">
+        <div class="cart-label d-lg-show">
+            <span class="cart-name">Shopping Cart:</span>
+            <span class="cart-price">$@subtotal</span>
+        </div>
+        <i class="d-icon-bag"><span class="cart-count">@Model.Count()</span></i>
+    </a>
+    <div class="cart-overlay"></div>
+<div class="dropdown-box">
+    <div class="cart-header">
+        <h4 class="cart-title">Shopping Cart</h4>
+        <a href="~/assets/#" class="btn btn-dark btn-link btn-icon-right btn-close">
+            close<i class="d-icon-arrow-right"></i><span class="sr-only">Cart</span>
+        </a>
+    </div>
+    <div class="products scrollable">
+      @foreach (var prod in Model)
+        {
+              <div class="product product-cart">
+            <figure class="product-media">
+                <a href="~/assets/product.html">
+                    <img src="~/assets/images/@prod.Product.ProductImages.Where(i=>i.IsMain==true).FirstOrDefault().ImageName" alt="product" width="80"
+                         height="88" />
+                </a>
+                <a asp-action="RemoveBasket" asp-controller="Product" asp-route-id="@prod.Product.Id" onclick="removebasket(event)" class="btn removebasket btn-link btn-close">
+                    x
+                </a>
+            </figure>
+            <div class="product-detail">
+                <a asp-action="Detail" asp-controller="Product" class="product-name">@prod.Product.Name</a>
+                <div class="price-box"> 
+                    <span class="product-quantity">@prod.Count</span>
+                        @{
+                            var sellprice = prod.Product.SellPrice * (100 - prod.Product.DiscountPercent) / 100 ;
+                        }
+                        <span class="product-price">$@sellprice</span>
+                </div>
+            </div>
+
+        </div>
+        }
+        <!-- End of Cart Product -->
+       
+    </div>
+    <!-- End of Products  -->
+    <div class="cart-total">
+        <label>Subtotal:</label>
+      
+        <span class="price">$@subtotal</span>
+    </div>
+    <!-- End of Cart Total -->
+    <div class="cart-action">
+        <a href="~/assets/cart.html" class="btn btn-dark btn-link">View Cart</a>
+        <a href="~/assets/checkout.html" class="btn btn-dark"><span>Go To Checkout</span></a>
+    </div>
+    <!-- End of Cart Action -->
+</div>
+</div>
+<!-- End Dropdown Box -->
+@section scripts{
+      
+}

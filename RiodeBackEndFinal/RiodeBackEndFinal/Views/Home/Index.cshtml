@@ -36,7 +36,7 @@
                                data-animation-options="{'name': 'fadeInUp', 'duration': '1s', 'delay': '.8s'}">
                                         @slider.SubTitle
                                     </p>
-                                    <a href="~/assets/shop.html" class="btn btn-dark btn-rounded slide-animate mb-1"
+                                    <a asp-action="Shop" asp-controller="Product" class="btn btn-dark btn-rounded slide-animate mb-1"
                                data-animation-options="{'name': 'fadeInLeft', 'duration': '1s', 'delay': '1.5s'}">
                                         Shop
                                         Now<i class="d-icon-arrow-right"></i>
@@ -54,7 +54,7 @@
                                data-animation-options="{'name': 'fadeInUp', 'duration': '1s', 'delay': '.8s'}">
                                         @slider.SubTitle
                                     </p>
-                                    <a href="~/assets/shop.html" class="btn btn-dark btn-rounded slide-animate mb-1"
+                                    <a asp-action="Shop" asp-controller="Product" class="btn btn-dark btn-rounded slide-animate mb-1"
                                data-animation-options="{'name': 'fadeInLeft', 'duration': '1s', 'delay': '1.5s'}">
                                         Shop
                                         Now<i class="d-icon-arrow-right"></i>
@@ -71,7 +71,7 @@
                                data-animation-options="{'name': 'fadeInUp', 'duration': '1s', 'delay': '.8s'}">
                                         @slider.SubTitle
                                     </p>
-                                    <a href="~/assets/shop.html" class="btn btn-dark btn-rounded slide-animate mb-1"
+                                    <a asp-action="Shop" asp-controller="Product" class="btn btn-dark btn-rounded slide-animate mb-1"
                                data-animation-options="{'name': 'fadeInLeft', 'duration': '1s', 'delay': '1.5s'}">
                                         Shop
                                         Now<i class="d-icon-arrow-right"></i>
@@ -162,7 +162,7 @@
 
                             <div class="col-xs-6 col-lg-3 mb-4">
                                 <div class="category category-default1 category-absolute banner-radius overlay-zoom">
-                                    <a href="~/assets/shop.html">
+                                <a asp-action="Shop" asp-controller="Product">
                                         <figure class="category-media">
                                             <img src="~/assets/images/@item.ImageName" alt="category" width="280"
                                                  height="280" style="background-color: #8c8c8d;" />
@@ -170,7 +170,7 @@
                                     </a>
                                     <div class="category-content">
                                         <h4 class="category-name font-weight-bold ls-l">
-                                            <a href="~/assets/shop.html">
+                                            <a asp-action="Shop" asp-controller="Product">
                                            @item.Name
                                             </a>
                                         </h4>
@@ -227,11 +227,10 @@
                                 @if (item.DiscountPercent>0)
                                 {
                                     <label class="product-label label-sale" title="On-Sale Product">@item.DiscountPercent% Off</label>
-
                                 }
                             </div>  
                             <div class="product-action-vertical">
-                                <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
+                                <a asp-action="AddBasket" asp-controller="Product" asp-route-id="@item.Id" class="btn-product-icon addbasket btn-cart" data-toggle="modal"
                                data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
                                 <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
                                     <i class="d-icon-heart"></i>
@@ -246,7 +245,7 @@
                                 <a href="~/assets/shop-grid-3cols.html">@item.Category.Name</a>
                             </div>
                             <h3 class="product-name">
-                                <a href="~/assets/product.html">@item.Name</a>
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a>
                             </h3>
                             <div class="product-price">
                                 <span class="price">$@item.SellPrice</span>
@@ -293,14 +292,16 @@
                             }
                         }
                     }">
+                       @foreach (var item in Model.Products.OrderByDescending(p=>p.CreatedAt).Take(5))
+                {
                         <div class="product text-center">
                             <figure class="product-media">
-                                <a href="~/assets/product.html">
-                                    <img src="~/assets/images/demos/demo1/products/product5.jpg" alt="Blue Pinafore Denim Dress"
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id">
+                                    <img src="~/assets/images/@item.ProductImages.Where(p=>p.IsMain==true).FirstOrDefault().ImageName" alt="Blue Pinafore Denim Dress"
                                          width="220" height="245" style="background-color: #f2f3f5;" />
                                 </a>
                                 <div class="product-action-vertical">
-                                    <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
+                                <a asp-action="AddBasket" asp-controller="Product" asp-route-id="@item.Id" class="btn-product-icon btn-cart" data-toggle="modal"
                                        data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
                                     <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
                                         <i class="d-icon-heart"></i>
@@ -312,13 +313,13 @@
                             </figure>
                             <div class="product-details">
                                 <div class="product-cat">
-                                    <a href="~/assets/shop-grid-3cols.html">Watches</a>
+                                    <a href="~/assets/shop-grid-3cols.html">@item.Category.Name</a>
                                 </div>
                                 <h3 class="product-name">
-                                    <a href="~/assets/product.html">Fashion Electric Wrist Watch</a>
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a>
                                 </h3>
                                 <div class="product-price">
-                                    <span class="price">$270.99</span>
+                                    <span class="price">$@item.SellPrice</span>
                                 </div>
                                 <div class="ratings-container">
                                     <div class="ratings-full">
@@ -329,159 +330,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="~/assets/product.html">
-                                    <img src="~/assets/images/demos/demo1/products/product6.jpg" alt="Blue Pinafore Denim Dress"
-                                         width="220" height="245" style="background-color: #f2f3f5;" />
-                                </a>
-                                <div class="product-label-group">
-                                    <label class="product-label label-new">New</label>
-                                </div>
-                                <div class="product-action-vertical">
-                                    <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                       data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
-                                    <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
-                                        <i class="d-icon-heart"></i>
-                                    </a>
-                                </div>
-                                <div class="product-action">
-                                    <a href="~/assets/#" class="btn-product btn-quickview" title="Quick View">Quick View</a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <div class="product-cat">
-                                    <a href="~/assets/shop-grid-3cols.html">Women</a>
-                                </div>
-                                <h3 class="product-name">
-                                    <a href="~/assets/product.html">Hempen Hood a Mourner</a>
-                                </h3>
-                                <div class="product-price">
-                                    <span class="price">$12.83</span>
-                                </div>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width:20%"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="~/assets/product.html" class="rating-reviews">( 3 reviews )</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="~/assets/product.html">
-                                    <img src="~/assets/images/demos/demo1/products/product7.jpg" alt="Blue Pinafore Denim Dress"
-                                         width="220" height="245" style="background-color: #f2f3f5;" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                       data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
-                                    <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
-                                        <i class="d-icon-heart"></i>
-                                    </a>
-                                </div>
-                                <div class="product-action">
-                                    <a href="~/assets/#" class="btn-product btn-quickview" title="Quick View">Quick View</a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <div class="product-cat">
-                                    <a href="~/assets/shop-grid-3cols.html">Women</a>
-                                </div>
-                                <h3 class="product-name">
-                                    <a href="~/assets/product.html">Women Beautiful Headgear</a>
-                                </h3>
-                                <div class="product-price">
-                                    <span class="price">$78.24</span>
-                                </div>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width:40%"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="~/assets/product.html" class="rating-reviews">( 8 reviews )</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="~/assets/product.html">
-                                    <img src="~/assets/images/demos/demo1/products/product8.jpg" alt="Blue Pinafore Denim Dress"
-                                         width="220" height="245" style="background-color: #f2f3f5;" />
-                                </a>
-                                <div class="product-label-group">
-                                    <span class="product-label label-new">New</span>
-                                </div>
-                                <div class="product-action-vertical">
-                                    <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                       data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
-                                    <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
-                                        <i class="d-icon-heart"></i>
-                                    </a>
-                                </div>
-                                <div class="product-action">
-                                    <a href="~/assets/#" class="btn-product btn-quickview" title="Quick View">Quick View</a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <div class="product-cat">
-                                    <a href="~/assets/shop-grid-3cols.html">Shoes</a>
-                                </div>
-                                <h3 class="product-name">
-                                    <a href="~/assets/product.html">Converse Training Shoes</a>
-                                </h3>
-                                <div class="product-price">
-                                    <span class="price">$113.00</span>
-                                </div>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width:80%"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="~/assets/product.html" class="rating-reviews">( 11 reviews )</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="~/assets/product.html">
-                                    <img src="~/assets/images/demos/demo1/products/product9.jpg" alt="Blue Pinafore Denim Dress"
-                                         width="220" height="245" style="background-color: #f2f3f5;" />
-                                </a>
-                                <div class="product-label-group">
-                                    <span class="product-label label-sale">27% Off</span>
-                                </div>
-                                <div class="product-action-vertical">
-                                    <a href="~/assets/#" class="btn-product-icon btn-cart" data-toggle="modal"
-                                       data-target="#addCartModal" title="Add to cart"><i class="d-icon-bag"></i></a>
-                                    <a href="~/assets/#" class="btn-product-icon btn-wishlist" title="Add to wishlist">
-                                        <i class="d-icon-heart"></i>
-                                    </a>
-                                </div>
-                                <div class="product-action">
-                                    <a href="~/assets/#" class="btn-product btn-quickview" title="Quick View">Quick View</a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <div class="product-cat">
-                                    <a href="~/assets/shop-grid-3cols.html">Bags & Backpacks</a>
-                                </div>
-                                <h3 class="product-name">
-                                    <a href="~/assets/product.html">Women's Fashion Handbag</a>
-                                </h3>
-                                <div class="product-price">
-                                    <ins class="new-price">$53.99</ins><del class="old-price">$67.99</del>
-                                </div>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width:60%"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="~/assets/product.html" class="rating-reviews">( 16 reviews )</a>
-                                </div>
-                            </div>
-                        </div>
+                    
+                }
                     </div>
                 </section>
 
@@ -558,337 +408,7 @@
                     </div>
                 </section>
 
-                <section class="product-widget-wrapper pb-2 pb-md-10 appear-animate">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-6 mb-4">
-                                <div class="widget widget-products appear-animate" data-animation-options="{
-                                    'name': 'fadeInLeftShorter',
-                                    'delay': '.5s'
-                                }">
-                                    <h4 class="widget-title border-no lh-1 font-weight-bold">Sale Products</h4>
-                                    <div class="products-col">
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product10.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Women’s Beautiful
-                                                        Headgear
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$78.24</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:40%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product11.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">Hand Electric Cell</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$26.00</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:100%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product12.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Women Hempen Hood
-                                                        a Mourner
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$30.00</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:20%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 mb-4">
-                                <div class="widget widget-products appear-animate" data-animation-options="{
-                                    'name': 'fadeInLeftShorter',
-                                    'delay': '.3s'
-                                }">
-                                    <h4 class="widget-title border-no lh-1 font-weight-bold">Latest Products</h4>
-                                    <div class="products-col">
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product13.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Fashionable Orginal
-                                                        Trucker
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$78.64</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:40%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product14.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">Men Summer Sneaker</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$79.45</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:60%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product15.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">Season Sports Cap</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$64.27</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:10%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 mb-4">
-                                <div class="widget widget-products appear-animate" data-animation-options="{
-                                    'name': 'fadeInRightShorter',
-                                    'delay': '.3s'
-                                }">
-                                    <h4 class="widget-title border-no lh-1 font-weight-bold">Best of the Week</h4>
-                                    <div class="products-col">
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product16.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">Blue Sports Shoes</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$36.00</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:10%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product17.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">Fashion Handbag</a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <ins class="new-price">$53.99</ins><del class="old-price">$67.99</del>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:100%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product18.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Women’s Beautiful
-                                                        Headgear
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$82.23</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:60%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 mb-4">
-                                <div class="widget widget-products appear-animate" data-animation-options="{
-                                    'name': 'fadeInRightShorter',
-                                    'delay': '.5s'
-                                }">
-                                    <h4 class="widget-title border-no lh-1 font-weight-bold">Popular</h4>
-                                    <div class="products-col">
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product19.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Fashion Electric Wrist
-                                                        Watch
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$270.99</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:40%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product20.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Mackintosh Poket
-                                                        Backpack
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <ins class="new-price">$125.99</ins><del class="old-price">$160.99</del>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:60%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product product-list-sm">
-                                            <figure class="product-media">
-                                                <a href="~/assets/product.html">
-                                                    <img src="~/assets/images/demos/demo1/products/product21.jpg" alt="product"
-                                                         width="100" height="114" style="background-color: #f2f3f5;" />
-                                                </a>
-                                            </figure>
-                                            <div class="product-details">
-                                                <h3 class="product-name">
-                                                    <a href="~/assets/product.html">
-                                                        Hempen Hood a
-                                                        Mourner
-                                                    </a>
-                                                </h3>
-                                                <div class="product-price">
-                                                    <span class="price">$12.83</span>
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width:10%"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+               @await Component.InvokeAsync("FourCrudProduct")
             </div>
         </main>
 <!-- End of Main -->

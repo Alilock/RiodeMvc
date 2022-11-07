@@ -527,6 +527,32 @@ namespace RiodeBackEndFinal.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.UserBasket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("UserBaskets");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -662,9 +688,28 @@ namespace RiodeBackEndFinal.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("RiodeBackEndFinal.Models.UserBasket", b =>
+                {
+                    b.HasOne("RiodeBackEndFinal.Models.AppUser", "AppUser")
+                        .WithMany("UserBaskets")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("RiodeBackEndFinal.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("RiodeBackEndFinal.Models.AppUser", b =>
                 {
                     b.Navigation("Reviews");
+
+                    b.Navigation("UserBaskets");
                 });
 
             modelBuilder.Entity("RiodeBackEndFinal.Models.Badge", b =>

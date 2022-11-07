@@ -4,6 +4,11 @@
 	label::before{
 		display:none !important;
 	}
+
+	label::after {
+		display: none !important;
+	}
+
 		.price-input{
 	  width: 100%;
 	  display: flex;
@@ -103,19 +108,18 @@
 					@foreach (var cat in Model.Categories.Where(c=>c.ParentId is null))
 					{
 					<li>
-								<input type="radio" style="appearance:radio" class="filt" name="CategoryId"  value="@cat.Id"> <label style="cursor:pointer" name="CategoryId">@cat.Name + @cat.Id</label>
+								<input type="radio" style="appearance:radio" class="filt" name="CategoryId" id="@cat.Name"  value="@cat.Id"> <label style="cursor:pointer" for="@cat.Name">@cat.Name</label>
 						<ul style="display: block">
 							@foreach (var child in cat.Children)
 								{
 									<li>
-											<input type="radio" class="filt" style="appearance:radio" name="CategoryId" value="@child.Id"> <label style="cursor:pointer" name="CategoryId">@child.Name + @child.Id</label>
-									</li>	
+											<input type="radio" class="filt" style="appearance:radio" name="CategoryId" id="@child.Name" value="@child.Id"> <label style="cursor:pointer" for="@child.Name">@child.Name </label>
+									</li>
 								}
 						</ul>
 					</li>
 						
 					}
-					
 				</ul>
 			</div>
 			<div class="widget widget-collapsible">
@@ -148,7 +152,7 @@
 					@foreach (var color in Model.Colors)
 					{
 						<li>
-								<input class="filt" style="appearance:checkbox" type="checkbox" name="ColorIds" value="@color.Id" multiple> <label for="ColorIds" style="cursor:pointer">@color.Name</label>
+								<input class="filt" style="appearance:checkbox" type="checkbox" id="@color.Name" name="ColorIds" value="@color.Id" multiple> <label for="@color.Name" style="cursor:pointer">@color.Name</label>
 						</li>
 					}
 				</ul>

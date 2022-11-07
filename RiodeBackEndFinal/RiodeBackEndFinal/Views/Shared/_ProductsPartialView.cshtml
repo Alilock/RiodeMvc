@@ -5,7 +5,7 @@
 <div class="product-wrap">
 	<div class="product">
 		<figure class="product-media">
-			<a href="product.html">
+			<a asp-action="Detail" asp-controller="Product" asp-route-id="@prod.Id">
 				<img src="~/assets/images/@prod.ProductImages.Where(pi=>pi.IsMain==true).FirstOrDefault().ImageName" alt="product" width="280" height="315">
 			</a>
 			<div class="product-label-group">
@@ -20,8 +20,9 @@
 					}
 			</div>
 			<div class="product-action-vertical">
-				<a href="#" class="btn-product-icon btn-cart" data-toggle="modal"
-				   data-target="#addCartModal" title="Add to cart">
+				<a asp-action="AddBasket" asp-controller="Product" asp-route-id="@prod.Id"class="btn-product-icon addbasket btn-cart"
+				 data-toggle="modal"
+				 data-target="#addCartModal" title="Add to cart">
 					<i class="d-icon-bag"></i>
 				</a>
 				<a href="#" class="btn-product-icon btn-wishlist"

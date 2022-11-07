@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts;
+using Newtonsoft.Json;
 using RiodeBackEndFinal.DAL;
 using RiodeBackEndFinal.Models;
 using RiodeBackEndFinal.ViewModels;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
 
 namespace RiodeBackEndFinal.Controllers
 {
@@ -19,6 +18,7 @@ namespace RiodeBackEndFinal.Controllers
         public ProductController(RiodeContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            
         }
 
 
@@ -108,6 +108,55 @@ namespace RiodeBackEndFinal.Controllers
             ICollection<Review> comments =await _context.Reviews.Where(r => r.ProductId == prod.Id).Include(r=>r.AppUser).ToListAsync();
 
             return PartialView("_ProductCommentPartialView", comments);
+        }
+        public async Task<IActionResult> AddBasket(int? id)
+        {
+            if (id is null) return BadRequest();
+            var prod = _context.Products.Include(p=>p.ProductImages).FirstOrDefault(p => p.Id == id);
+            if (prod is null) return NotFound();
+            var userName = User.Identity.Name;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            ICollection<UserBasket> existbasket = _context.UserBaskets.Where(b => b.AppUserId == user.Id).ToList();
+            if (existbasket.Count()!=0)
+            {
+                if (!existbasket.Any(b=>b.ProductId==prod.Id))
+                {
+                    UserBasket basketitem1 = new() { AppUser = user, Product = prod, Count = 1 };
+
+                    _context.UserBaskets.Add(basketitem1);
+                }
+                else
+                {
+                    var item = existbasket.Where(b => b.ProductId == prod.Id).FirstOrDefault();
+                    item.Count++;
+                }
+               await _context.SaveChangesAsync();
+                return ViewComponent("Basket");
+            }
+            UserBasket basketitem = new() { AppUser = user, Product= prod, Count=1};
+            await _context.UserBaskets.AddAsync(basketitem);
+            await _context.SaveChangesAsync();
+            ICollection<UserBasket> basket = _context.UserBaskets.Where(ub => ub.AppUserId == user.Id).ToList();
+            return ViewComponent("Basket");
+        }
+
+        public async Task<IActionResult> RemoveBasket(int? id)
+        {
+            if (id is null) return BadRequest();
+            var prod = _context.Products.Include(p => p.ProductImages).FirstOrDefault(p => p.Id == id);
+            if (prod is null) return NotFound();
+            var userName = User.Identity.Name;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            ICollection<UserBasket> existbasket = _context.UserBaskets.Where(b => b.AppUserId == user.Id).ToList();
+            if (!existbasket.Any()) return NotFound();
+            var removeitem = existbasket.Where(b => b.ProductId == prod.Id).ToList();
+            foreach (var item in removeitem)
+            {
+                _context.UserBaskets.Remove(item);
+            }
+            await _context.SaveChangesAsync();
+            return ViewComponent("Basket");
+            
         }
     }
 }
